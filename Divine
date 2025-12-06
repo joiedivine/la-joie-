@@ -1,0 +1,58 @@
+Parfait, merci !
+Donc ton compte est **jeremie-adj** et ton dépôt s’appelle **la-joie** (GitHub n’accepte pas les espaces, donc normalement le dépôt doit être `la-joie` ou `la_joie` — confirme-moi si besoin).
+
+Voici exactement ce que tu dois faire pour mettre ce dépôt en ligne avec GitHub Pages :
+
+---
+
+# ✅ Étape 1 : Vérifier l’arborescence du dépôt
+
+Pour que GitHub Pages fonctionne, ton fichier **index.html** doit être :
+
+```
+la-joie/
+ ├── index.html
+ ├── style.css (si tu en as un)
+ ├── script.js (si tu en as un)
+ └── images/ (si tu en as)
+```
+
+Si ton index est dans un dossier (ex : `/site/index.html`), il faudra me le dire.
+
+---
+
+# ✅ Étape 2 : Activer GitHub Pages
+
+1. Va sur ton dépôt :
+   **[https://github.com/jeremie-adj/la-joie](https://github.com/jeremie-adj/la-joie)**
+2. Clique sur **Settings**.
+3. Dans le menu à gauche, clique sur **Pages**.
+4. Dans **Branch**, choisis :
+
+   * **main**
+   * **/(root)**
+5. Clique sur **Save**.
+
+Après quelques secondes, GitHub va générer ton site.
+
+---
+
+# 🌍 Étape 3 : Lien du site
+
+Ton site sera disponible ici :
+
+```
+https://jeremie-adj.github.io/la-joie/
+```
+
+---
+
+# 👉 Pour vérifier ensemble
+
+Envoie-moi :
+
+* si ton fichier **index.html** est bien à la racine du dépôt
+* s’il y a un message d’erreur quand tu actives la page
+* ou si la page s’affiche mais avec un bug
+
+Je peux ensuite t’aider à corriger ou optimiser ton site.
