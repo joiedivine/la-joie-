@@ -1,77 +1,244 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>La Joie - Boutique & Couture</title>
-  <style>
-    body {font-family: Arial, sans-serif; margin:0; padding:0; background:#f7f7f7;}
-    header {background:#ff3366; color:white; padding:20px; text-align:center; font-size:28px; font-weight:bold;}
-    nav {background:white; padding:10px; text-align:center; box-shadow:0 2px 5px rgba(0,0,0,0.1);}    nav a {margin:0 15px; text-decoration:none; color:#333; font-weight:bold;}
-    section {padding:30px;}
-    h2 {color:#ff3366;}
-    .gallery {display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:15px;}
-    .gallery img {width:100%; border-radius:10px;}
-    .whatsapp-btn {position:fixed; bottom:20px; right:20px; background:#25d366; color:white; padding:15px 20px; border-radius:50px; font-size:18px; text-decoration:none; box-shadow:0 4px 10px rgba(0,0,0,0.3);}  
-    .product {background:white; padding:20px; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1);}    .product button {background:#ff3366; color:white; border:none; padding:10px 15px; border-radius:6px; margin-top:10px; cursor:pointer;}
-    footer {background:#333; color:white; text-align:center; padding:20px; margin-top:40px;}
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>La Joie – Boutique & Services</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #ffffff;
+        color: #333;
+        overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+        background: linear-gradient(45deg, #ff8a00, #ff5500);
+        padding: 20px;
+        color: #fff;
+        text-align: center;
+        font-size: 26px;
+        font-weight: bold;
+        animation: fadeDown 1s ease-out;
+    }
+
+    /* Logo */
+    .logo {
+        font-size: 40px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    /* Hero */
+    .hero {
+        background: #fff3e0;
+        padding: 40px 20px;
+        text-align: center;
+        animation: fadeUp 1.2s ease-out;
+    }
+
+    .hero h1 {
+        margin: 0;
+        font-size: 32px;
+        color: #d35400;
+        font-weight: bold;
+    }
+
+    .hero p {
+        margin-top: 10px;
+        font-size: 18px;
+    }
+
+    .btn {
+        display: inline-block;
+        background: #ff5500;
+        padding: 12px 22px;
+        border-radius: 6px;
+        margin-top: 20px;
+        color: white;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    /* Sections */
+    .section {
+        padding: 30px 20px;
+    }
+
+    h2 {
+        color: #d35400;
+        margin-bottom: 15px;
+    }
+
+    /* Product grid */
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 15px;
+    }
+
+    .card {
+        background: white;
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+        animation: fade 1.2s ease-out;
+    }
+
+    /* Panier */
+    #cart {
+        background: #ffede0;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+        display: none;
+    }
+
+    /* Formulaire commande */
+    form input, form textarea, form select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+    }
+
+    /* WhatsApp button */
+    .whatsapp {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #25D366;
+        color: white;
+        padding: 14px 20px;
+        border-radius: 50px;
+        font-weight: bold;
+        text-decoration: none;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+        from { transform: translateY(40px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeDown {
+        from { transform: translateY(-40px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fade {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    footer {
+        background: #333;
+        padding: 20px;
+        text-align: center;
+        color: white;
+        margin-top: 20px;
+    }
+</style>
+
+<script>
+let cart = [];
+
+function addToCart(name, price) {
+    cart.push({name, price});
+    document.getElementById("cart").style.display = "block";
+    updateCart();
+}
+
+function updateCart() {
+    let list = cart.map(p => `<li>${p.name} – ${p.price} CFA</li>`).join("");
+    document.getElementById("cart-items").innerHTML = list;
+}
+</script>
+
 </head>
+
 <body>
 
-<header>LA JOIE - Couture & Boutique</header>
+<header>
+    <div class="logo">🛍️ La Joie</div>
+    Boutique & Services
+</header>
 
-<nav>
-  <a href="#presentation">Présentation</a>
-  <a href="#modeles">Modèles</a>
-  <a href="#boutique">Boutique</a>
-  <a href="#contact">Contact</a>
-</nav>
+<div class="hero">
+    <h1>Bienvenue chez La Joie</h1>
+    <p>Boutique – Services – Produits – Téléchargements</p>
+    <a href="#boutique" class="btn">Découvrir</a>
+</div>
 
-<section id="presentation">
-  <h2>Présentation de l'entreprise</h2>
-  <p>Bienvenue chez <strong>La Joie</strong>, votre maison spécialisée dans : confection de vêtements sur mesure, fournitures de couture, chaussures homme & femme, pagnes Bazin, et boutique en ligne complète.</p>
-</section>
+<div class="section" id="boutique">
+    <h2>Nos Produits</h2>
 
-<section id="modeles">
-  <h2>Modèles Hommes, Femmes, Enfants & Chaussures</h2>
-  <div class="gallery">
-    <img src="https://i.imgur.com/1ZQZ1ZC.jpg" alt="Tenue Homme">
-    <img src="https://i.imgur.com/gdJ5Y0H.jpg" alt="Tenue Femme">
-    <img src="https://i.imgur.com/oFjKf3u.jpg" alt="Tenue Enfant">
-    <img src="https://i.imgur.com/6p9dM0Z.jpg" alt="Chaussures">
-  </div>
-</section>
+    <div class="product-grid">
+        <div class="card">
+            <h3>Savon naturel</h3>
+            <p>Prix : 5 000 CFA</p>
+            <button class="btn" onclick="addToCart('Savon naturel', 5000)">Ajouter</button>
+        </div>
 
-<section id="boutique">
-  <h2>Boutique en ligne</h2>
-  <div class="product">
-    <h3>Pagne Bazin</h3>
-    <p>Prix : 15.000 FCFA</p>
-    <button>Ajouter au panier</button>
-  </div><br>
-  <div class="product">
-    <h3>Chaussures Femme</h3>
-    <p>Prix : 10.000 FCFA</p>
-    <button>Ajouter au panier</button>
-  </div><br>
-  <div class="product">
-    <h3>Vêtement sur mesure</h3>
-    <p>Commande personnalisée</p>
-    <button>Commander</button>
-  </div>
-</section>
+        <div class="card">
+            <h3>Huile de coco</h3>
+            <p>Prix : 7 000 CFA</p>
+            <button class="btn" onclick="addToCart('Huile de coco', 7000)">Ajouter</button>
+        </div>
 
-<section id="contact">
-  <h2>Contact & Paiements</h2>
-  <p><strong>WhatsApp :</strong> +22786037639 / +22794647849</p>
-  <p><strong>Paiements acceptés :</strong> MTN Mobile Money, Airtel Money, Mynita, Amana Transfert</p>
-</section>
+        <div class="card">
+            <h3>Crème visage</h3>
+            <p>Prix : 10 000 CFA</p>
+            <button class="btn" onclick="addToCart('Crème visage', 10000)">Ajouter</button>
+        </div>
+    </div>
+</div>
 
-<a class="whatsapp-btn" href="https://wa.me/22786037639" target="_blank">WhatsApp</a>
+<!-- Panier -->
+<div class="section" id="cart">
+    <h2>Panier</h2>
+    <ul id="cart-items"></ul>
+</div>
+
+<!-- Formulaire de commande -->
+<div class="section">
+    <h2>Passer une commande</h2>
+
+    <form>
+        <input type="text" placeholder="Nom complet" required>
+        <input type="text" placeholder="Téléphone" required>
+        <textarea placeholder="Votre commande" required></textarea>
+
+        <label>Moyen de paiement</label>
+        <select required>
+            <option>Mynita</option>
+            <option>Amana</option>
+            <option>MTN MoMo</option>
+            <option>Moov Flooz</option>
+            <option>À la livraison</option>
+        </select>
+
+        <button class="btn" style="width:100%;margin-top:20px;">Envoyer</button>
+    </form>
+</div>
+
+<!-- Version mobile -->
+<div class="section">
+    <h2>Télécharger l'app mobile</h2>
+    <a class="btn" download href="La-joie-mobile.apk">Télécharger APK</a>
+</div>
+
+<!-- WhatsApp -->
+<a class="whatsapp" href="https://wa.me/229XXXXXXXX">WhatsApp</a>
 
 <footer>
-  © 2025 La Joie - Tous droits réservés
+    © 2024 – La Joie | Tous droits réservés
 </footer>
 
 </body>
